@@ -1,0 +1,3 @@
+guard 'uglify', :destination_file => "public/javascripts/application.js" do
+  watch (%r{app/assets/javascripts/application.js})
+end
