@@ -7,22 +7,39 @@ module Guard
   class Uglify < Guard
     def initialize(watchers=[], options={})
       super 
-      @destination_file = options[:destination_file]
+      @input = options[:input]
+      @output = options[:output]
     end
 
     def start
-       UI.info "Uglify is waiting for js file changes..."
+      uglify
     end
-    
+
+    def reload
+      uglify
+    end
+
     def run_all
-      true
+      uglify
     end
 
     def run_on_change(paths)
-      @destination_file ||= "public/javascripts/application.js"
-      uglified = Uglifier.new.compile(File.read(paths[0]))
-      File.open(@destination_file,'w'){ |f| f.write(uglified) }
-      UI.info "Guard::Uglify compressing file #{@destination_file}"
+      uglify
+    end
+
+    private
+    def uglify
+      begin
+        uglified = Uglifier.new.compile(File.read(@input))
+        File.open(@output,'w'){ |f| f.write(uglified) }
+        UI.info "Uglified #{@input} to #{@output}"
+        Notifier.notify "Uglified #{@input} to #{@output}", :title => 'Uglify'
+        true
+      rescue Exception => e
+        UI.error "Uglifying #{@input} failed: #{e}"
+        Notifier.notify "Uglifying #{@input} failed: #{e}", :title => 'Uglify', :image => :failed
+        false
+      end
     end
   end
 end
