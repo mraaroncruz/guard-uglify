@@ -10,8 +10,8 @@ in your project's directory root
 
 which will add this to your Guardfile  
 
-    guard 'uglify', :destination_file => "public/javascripts/application.js" do
-      watch (%r{app/assets/javascripts/application.js})
+    guard 'uglify', :input => 'app/assets/javascript/application.js', :output => "public/javascripts/application.js" do
+      watch 'app/assets/javascripts/application.js'
     end
 
 The destination file will be compressed when the `watch`ed file changes.  If you are using this with my `guard-sprocketize` gem, place the above guard block after the sprockets block in your `Guardfile`.
