@@ -1,3 +1,3 @@
-guard 'uglify', :input => 'app/assets/javascript/application.js', :output => "public/javascripts/application.js" do
+guard 'uglify', :input => 'app/assets/javascripts/application.js', :output => "public/javascripts/application.js" do
   watch (%r{app/assets/javascripts/application.js})
 end
