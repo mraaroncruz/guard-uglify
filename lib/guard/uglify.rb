@@ -20,7 +20,7 @@ module Guard
 
     def run_on_change(paths)
       @destination_file ||= "public/javascripts/application.js"
-      uglified = Uglifier.new.compile(File.read(@destination_file))
+      uglified = Uglifier.new.compile(File.read(paths[0]))
       File.open(@destination_file,'w'){ |f| f.write(uglified) }
       UI.info "Guard::Uglify compressing file #{@destination_file}"
     end
