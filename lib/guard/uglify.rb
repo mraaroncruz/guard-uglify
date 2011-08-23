@@ -7,7 +7,7 @@ module Guard
   class Uglify < Guard
     def initialize(watchers=[], options={})
       super 
-      @input = options[:input]
+      @input  = options[:input]
       @output = options[:output]
     end
 
@@ -32,11 +32,11 @@ module Guard
       begin
         uglified = Uglifier.new.compile(File.read(@input))
         File.open(@output,'w'){ |f| f.write(uglified) }
-        UI.info "Uglified #{@input} to #{@output}"
+        UI.info         "Uglified #{@input} to #{@output}"
         Notifier.notify "Uglified #{@input} to #{@output}", :title => 'Uglify'
         true
       rescue Exception => e
-        UI.error "Uglifying #{@input} failed: #{e}"
+        UI.error        "Uglifying #{@input} failed: #{e}"
         Notifier.notify "Uglifying #{@input} failed: #{e}", :title => 'Uglify', :image => :failed
         false
       end
