@@ -4,7 +4,7 @@ require 'guard/uglify/version'
 
 Gem::Specification.new do |s|
   s.name        = "guard-uglify"
-  s.version     = Guard::Uglify::VERSION
+  s.version     = Guard::UglifyVersion::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Aaron Cruz"]
   s.email       = ["aaron@aaroncruz.com"]
