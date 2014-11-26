@@ -1,12 +1,12 @@
 require 'guard'
-require 'guard/guard'
+require 'guard/plugin'
 
 require 'uglifier'
 
 module Guard
-  class Uglify < Guard
-    def initialize(watchers=[], options={})
-      super 
+  class Uglify < Plugin
+    def initialize(options={})
+      super
       @input  = options[:input]
       @output = options[:output]
     end
