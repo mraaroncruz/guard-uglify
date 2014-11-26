@@ -9,6 +9,9 @@ module Guard
       super
       @input  = options[:input]
       @output = options[:output]
+      if options[:input]
+        watchers << ::Guard::Watcher.new %r{options[:input]}
+      end
     end
 
     def start
