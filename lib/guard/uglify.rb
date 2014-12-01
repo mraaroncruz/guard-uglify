@@ -10,7 +10,8 @@ module Guard
       @input  = options[:input]
       @output = options[:output]
       if options[:input]
-        watchers << ::Guard::Watcher.new(%r{#{options[:input]}})
+        options[:watchers] = [] unless options[:watchers]
+        options[:watchers] << ::Guard::Watcher.new(%r{#{options[:input]}})
       end
     end
 
