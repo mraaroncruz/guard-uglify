@@ -1,7 +1,7 @@
 ## What?
 Guard wrapper for the [Uglifier](https://github.com/lautis/uglifier/blob/master/README.md) gem.
 
-# Installation
+## Installation
 Add to your `Gemfile`:
 ```ruby
 gem 'guard-uglify'
