@@ -1,0 +1,1 @@
+(function(){var l,r;return l="hello",r="world",l+" "+r}).call();
