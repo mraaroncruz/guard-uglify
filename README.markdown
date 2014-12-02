@@ -10,20 +10,20 @@ in your project's directory root
 
 which will add this to your Guardfile  
 
-    guard 'uglify', :input => 'app/assets/javascript/application.js', :output => "public/javascripts/application.js" do
-      watch 'app/assets/javascripts/application.js'
-    end
+    guard "uglify",
+        :input => "app/assets/javascripts/application.js",
+        :output => "public/javascripts/application.js"
 
-The destination file will be compressed when the `watch`ed file changes.  If you are using this with my `guard-sprocketize` gem, place the above guard block after the sprockets block in your `Guardfile`.
+The destination file will be compressed when the input file changes. If you are using this with my `guard-sprocketize` gem, place the above guard block after the sprockets block in your `Guardfile`.
 
 The base configuration would work for a rails 3 project with a directory structure like  
-        
+
     |-- app
     |   |-- controllers
     |   |-- assets
     |   |   |-- sass
     |   |   `-- javascripts
-    |   |       `-- application.js # your source javascript file 
+    |   |       `-- application.js # your source javascript file
     |   |-- helpers
     |   |-- mailers
     |   |-- models
